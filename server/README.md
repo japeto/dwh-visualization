@@ -1,6 +1,6 @@
 dwh-visualization
 =======================
-Server
+## Development server
 
 Python
 Flask
