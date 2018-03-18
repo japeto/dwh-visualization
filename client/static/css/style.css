@@ -1,0 +1,27 @@
+body {
+    height:2048px;
+}
+#chart1{
+    height:300px;
+}
+#background-image {
+   background-image: url("back2.jpg");
+   opacity: 0.8;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    /*opacity:0.4;
+    position:absolute;
+    top:0;
+    left:0;*/
+    height:200px;
+    z-index:0;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: orange;
+}
