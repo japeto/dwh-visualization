@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(POSTGRES_USER)s:\
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 db = SQLAlchemy(app)

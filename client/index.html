@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="JAPeTo">
+    <title>BI DASH</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+
+    <script src="static/js/jquery.min.js" charset="utf-8"></script>
+    <script src="static/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="static/js/d3.v3.min.js" charset="utf-8"></script>
+    <script src="static/js/c3.min.js" charset="utf-8"></script>
+
+
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Bici-Bikes</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Principal</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Acceder</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="background-image"></div>
+<div class="container" id="dash">
+    <div class="row" style="padding-top:40px;"></div>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--<img src="http://placehold.it/600x1600" alt="" class="img-responsive center-block">-->
+            <div class="col-sm-12">
+                <div class="row">
+                    <img src="http://placehold.it/300x250" alt="" class="img-responsive center-block">
+                </div>
+                <br/>
+            </div>
+            <div class="col-sm-12 well">
+                <!--<br>-->
+                <p class="text-center"> PROMOCION MAS UTILIZADA </p>
+                <div class="form-group row">
+                    <div class="col-xs-6">
+                        <input class="form-control input-xs" id="ex1" type="date" value="2010-01-01">
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control input-xs" id="ex2" type="date" value="2018-01-01">
+                    </div>
+                </div>
+                <div id="chart1" class="">
+                    <h6><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <span id="promoTitle"></span>
+                    </h6>
+                    <h4><span id="promoValue" class="bold padding-bottom-7"></span>
+                        <small><span id="promoTotal"></span></small>
+                    </h4>
+                    <hr>
+                    <div id="allpromo"></div>
+                    <p class="text-center">
+                        <span id="nValue"></span> veces se utilizó la promoción <span
+                            id="nTitle"></span></p>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12">
+                <hr>
+                <div class="row">
+                    <p class="text-center">COMPARATIVO ENTRE VENTAS X INTERNET Y X VENDEDOR<br/>
+                        PARA EL A&Ntilde;O: <select class="input-xs" name="yearVs" id="yearVs">
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011" selected>2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                        </select></p>
+                    <div id="chart5"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <br>
+                <!--<div class="well"></div>-->
+                <div class="row well">
+                    <p class="text-center">
+                        LOS
+                        <select id="numProdInve">
+                            <option value="05">05</
+                            "option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20" selected>20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                            <option value="55">55</option>
+                            <option value="60">60</option>
+                            <option value="65">65</option>
+                            <option value="70">70</option>
+                            <option value="75">75</option>
+                            <option value="80">80</option>
+                            <option value="85">85</option>
+                            <option value="90">90</option>
+                            <option value="95">95</option>
+                            <option value="100">100</option>
+                        </select>
+                        PRODUCTOS QUE MAS SE DEMORAN EN INVENTARIO
+                    </p>
+                    <div id="chart12"></div>
+                </div>
+            </div>
+            <div class="col-sm-12 well">
+                <br>
+                <p class="text-center">COMPARACION DEL NIVEL DE LLAMADAS AL CALL CENTER EN DIAS LABORALES VS.
+                    FESTIVOS</p>
+                <!--<img src="http://placehold.it/300x400" alt="" class="img-responsive center-block">-->
+                <div class="well">
+                    <h4 class="text-center"><span id="valHoliday">14740</span> llamadas<br>
+                        <small> En dia festivo</small>
+                    </h4>
+                </div>
+                <div class="well">
+                    <h4 class="text-center"><span id="valWeekday">28609</span> llamadas<br>
+                        <small>En dia de semana</small>
+                    </h4>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <br>
+                <div class="row">
+                    <p class="text-center">PRESUPUESTO ASIGNADO A CADA DEPARTAMENTO DE LA EMPRESA</p>
+                    <div id="chart16"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <br/>
+                    <p class="text-center">VENTAS TODOS LOS AÑOS</p>
+                    <div id="chart8"></div>
+                    <!--<img src="http://placehold.it/600x400" alt="" class="img-responsive center-block">-->
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <div class="row">
+                        <p class="text-center">VENTAS POR PROMOCION Y POR PRODUCTO</p>
+                        <div class="col-sm-12">
+                            <div class="form-group row">
+                                <div class="col-xs-6">
+                                    <input class="form-control input-xs" id="ex3" type="date" value="2010-01-01">
+                                </div>
+                                <div class="col-xs-6">
+                                    <input class="form-control input-xs" id="ex4" type="date" value="2018-01-01">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="" class="col-sm-6">
+                            <div id="chart2a"></div>
+                        </div>
+                        <div id="" class="col-sm-6">
+                            <div id="chart2b"></div>
+                        </div>
+                        <div class="row">
+                            <p class="text-center">COMPARACION DE VENTAS POR PROMOCION Y PRODUCTO</p>
+                            <div class="col-sm-12">
+                                <div id="chart2c"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--<div class="col-sm-12">-->
+                <!--<br>-->
+                <!--<p class="text-center">NIVEL DE VENTAS POR A&Ntilde;O, MES, TRIMESTRE Y SEMESTRE</p>-->
+                <!--<img src="http://placehold.it/600x450" alt="" class="img-responsive center-block">-->
+                <!--</div>-->
+                <div class="col-sm-12">
+                    <br>
+                    <div class="row">
+                        <!--<p class="text-center">COMPARACION DE VENTAS POR VOLUMEN FRENTE A VENTAS POR TEMPORADA</p>-->
+                        <div class="col-sm-6">
+                            <p class="text-center">NUMERO DE VENTAS POR INTERNET EN EL AÑO
+                                <select class="input-xs" name="yearPse">
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011" selected>2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                </select>
+                            </p>
+                            <div id="chart3a" class="well">
+                                <div class="text-center">
+                                    <span class="glyphicon glyphicon-globe" style="font-size:110px;"></span>
+                                </div>
+                                <h1 id="pseValue" class="display-1 text-center"></h1>
+                                <h4 class="text-center">ventas en <span id="pseYear"></span></h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="text-center">NUMERO DE VENTAS POR INTERNET ENTRE LOS AÑOS
+                                [<span id="year1">2010</span> - <span id="year2">2012</span>]</p>
+                            <div id="chart3b"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <br/>
+                    <p class="text-center">TOTAL DE VENTAS AGRUPADO POR PAISES</p>
+                    <!--<img src="http://placehold.it/600x450" alt="" class="img-responsive center-block">-->
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <input class="form-control input-xs" id="ex3" type="date" value="2010-01-01">
+                        </div>
+                        <div class="col-xs-6">
+                            <input class="form-control input-xs" id="ex4" type="date" value="2018-01-01">
+                        </div>
+                    </div>
+                    <div id="chart13"></div>
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <div class="row">
+                        <p class="text-center">COMPARACION DE LLAMADAS POR FRANJAS HORARIAS EN DIAS LABORALES</p>
+                        <div id="chart15"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-12 well">
+                    <p class="text-center">PROMOCION DE VENTAS X VOLUMEN QUE MAS PREFIEREN</p>
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <input class="form-control input-xs" id="ex5" type="date" value="2010-01-01">
+                        </div>
+                        <div class="col-xs-6">
+                            <input class="form-control input-xs" id="ex6" type="date" value="2018-01-01">
+                        </div>
+                    </div>
+                    <div id="chart7">
+                        <h6><span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
+                                id="promoTitle7"></span>
+                        </h6>
+                        <h4><span id="promoValue7" class="bold padding-bottom-7"></span>
+                            <small><span id="promoTotal7"></span></small>
+                        </h4>
+                        <hr>
+                        <div id="allpromo7"></div>
+                    </div>
+                    <hr>
+                    <p class="text-center">
+                        <b><span id="nTitle7"></span></b> Es la promoción que mas se prefiere </p>
+                </div>
+
+                <div class="col-sm-12">
+                    <br>
+                    <p class="text-center">TOTAL DE VENTAS DE PRODUCTOS AGRUPADOS POR CATEGORIA</p>
+                    <!--<img src="http://placehold.it/300x450" alt="" class="img-responsive center-block">-->
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <input class="form-control input-xs" id="ex8" type="date" value="2010-01-01">
+                        </div>
+                        <div class="col-xs-6">
+                            <input class="form-control input-xs" id="ex9" type="date" value="2018-01-01">
+                        </div>
+                    </div>
+                    <div id="chart9"></div>
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <div class="well">
+                        <p class="text-center">MONEDAS MAS USADAS EN LAS VENTAS</p>
+                        <div class="form-group row">
+                            <div class="col-xs-6">
+                                <input class="form-control input-xs" id="ex10" type="date" value="2010-01-01">
+                            </div>
+                            <div class="col-xs-6">
+                                <input class="form-control input-xs" id="ex11" type="date" value="2018-01-01">
+                            </div>
+                        </div>
+                        <div id="chart10"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <p class="text-center">PERFIL DE LOS CLIENTES QUE MAS COMPRAN X INTERNET</p>
+                    <img src="http://placehold.it/300x250" alt="" class="img-responsive center-block">
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <p class="text-center">PRODUCTOS QUE MAS UNIDADES EN INVENTARIO TIENEN</p>
+                    <!--<img src="http://placehold.it/300x250" alt="" class="img-responsive center-block">-->
+                    <div id="chart14" class="well">
+                        <div class="text-center">
+                            <span class="glyphicon glyphicon-th" style="font-size:110px;"></span>
+                        </div>
+                        <h1 id="productCant" class="display-1 text-center"></h1>
+                        <h4 class="text-center">unidades de<br/> <span id="producName"></span></h4>
+                        <ul id="productlist"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <br/>
+            <p class="text-center">TOTAL DE VENTAS POR PRODUCTO Y EN EL TIEMPO</p>
+
+            <div class="form-group row">
+                <div class="col-xs-6">
+                    <div class="col-xs-6">
+                        Producto:
+                    </div>
+                    <div class="col-xs-6">
+                        <select class="form-control input-xs" id="prodTimeSale"></select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="col-xs-6">
+                        <input class="form-control input-xs" id="ex12" type="date" value="2010-01-01">
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control input-xs" id="ex13" type="date" value="2018-01-01">
+                    </div>
+                </div>
+            </div>
+            <div id="chart11"></div>
+        </div>
+        <div class="col-sm-12">
+            <br/>
+            <p class="text-center">DEPARTAMENTO QUE MAS DINERO MUEVEN</p>
+            <div id="chart17"></div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-3 col-md-6">
+                <div class="container">
+
+
+                    <div class="col-lg-3">
+                        <h3>Repositorio:</h3>
+                        <div class="cuadro_intro_hover " style="background-color:black;">
+                            <p style="text-align:center; margin-top:2px;">
+                                <img src="static/9052079.jpeg" class="img-responsive" alt="">
+                            </p>
+                            <div class="caption">
+                                <div class="blur"></div>
+                                <div class="caption-text">
+                                    <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">
+                                        @japeto</h3>
+                                    <p>https://github.com/japeto</p>
+                                    <!--<a class=" btn btn-default" href="#"><span-->
+                                    <!--class="glyphicon glyphicon-plus"> INFO</span></a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3><a href="">Github</a></h3>
+                        <div class="cuadro_intro_hover " style="background-color:#cccccc;">
+                            <p style="text-align:center; margin-top:2px;">
+                                <img src="static/19536401.png" class="img-responsive" alt="">
+                            </p>
+                            <div class="caption">
+                                <div class="blur"></div>
+                                <div class="caption-text">
+                                    <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">
+                                        @Alexarigo</h3>
+                                    <p>https://github.com/Alexarigo</p>
+                                    <!--<a class=" btn btn-default" href="#"><span-->
+                                    <!--class="glyphicon glyphicon-plus"> INFO</span></a>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-12">
+                        <h3>Consultas:</h3>
+                        <ul>
+
+                            <li><a href="">¿Cuáles son las promociones que más toman los clientes?</a>
+                            <li><a href="">Comparación de ventas por promoción y producto</a>
+                            <li><a href="">Comparación de ventas por volumen frente a ventas por temporada</a>
+                            <li><a href="">¿Cuál es la promoción de ventas por volumen que más prefieren los
+                                clientes?</a>
+                            <li><a href="">Comparativo entre ventas por Internet y los vendedores de la empresa</a>
+                            <li><a href="">Nivel de ventas por año, mes, trimestre y semestre</a>
+                            <li><a href="">Total de ventas de productos agrupados por categoría</a>
+                            <li><a href="">Total de ventas agrupado por países</a>
+                            <li><a href="">Monedas más usadas por los clientes en las ventas</a>
+                            <li><a href="">Total de ventas por producto y en el tiempo</a>
+                            <li><a href="">Perfil de los clientes que más compran por Internet</a>
+                            <li><a href="">Productos que casi nunca se venden, mostrar los que más unidades en
+                                inventario tienen</a>
+                            <li><a href="">Productos que más se demoran en inventario (más de 3 meses, más de 6 meses,
+                                sin haber cambios)</a>
+                            <li><a href="">Comparación del nivel de llamadas al call center en días laborales Vs días
+                                festivos</a>
+                            <li><a href="">Comparación de llamadas por franjas horarias en días laborales</a>
+                            <li><a href="">Una comparación del presupuesto asignado a cada departamento de la
+                                empresa</a>
+                            <li><a href="">¿Cuáles con las cuentas y su departamento que más dinero mueven?</a>
+
+                        </ul>
+                    </div>
+
+                    <!--<div class="col-lg-3 col-md-6">-->
+                    <!--&lt;!&ndash;<h3>Contact:</h3>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p>Have a question or feedback? Contact me!</p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p><a href="" title="Contact me!"><i class="fa fa-envelope"></i> Contact</a></p>&ndash;&gt;-->
+                    <!--<h3>Repositorio:</h3>-->
+                    <!--<a href="" target="_blank" title="GitHub"><span class="fa-stack fa-lg">-->
+                    <!--<i class="fa fa-square-o fa-stack-2x"></i>-->
+                    <!--<i class="fa fa-github fa-stack-1x"></i>-->
+                    <!--</span>-->
+                    <!--GitHub</a>-->
+
+
+                    <!--</div>-->
+                    <br/>
+                    <div id="fb-root"></div>
+
+                    <div class="fb-like" data-href="" data-layout="standard" data-action="like" data-show-faces="true"
+                         data-share="true"></div>
+
+                    <div class="g-plusone" data-annotation="inline" data-width="300" data-href=""></div>
+                </div>
+                <hr>
+                <p> Mineria de datos | 2018</p>
+
+</footer>
+
+<script src="static/scripts.js"></script>
+<script src="static/actions.js"></script>
+
+</body>
+</html>
