@@ -1,6 +1,9 @@
 body {
     height:2048px;
-    background-color:red;
+    /*background-color: #7E909A;*/
+    /*background-color: #CED2CC;*/
+    background-color: #DADADA;
+    padding: 5px;
 }
 #dash{
     padding 30px;
@@ -9,7 +12,7 @@ body {
     height:450px;
 }
 #background-image {
-   background-image: url("../back2.jpg");
+   background-image: url("../back1.jpg");
    opacity: 0.8;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -18,7 +21,7 @@ body {
     position:absolute;
     top:0;
     left:0;*/
-    height:200px;
+    height:300px;
     z-index:0;
 }
 

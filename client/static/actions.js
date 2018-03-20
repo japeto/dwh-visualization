@@ -1,58 +1,106 @@
 
 
 $("#ex1 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex1 ").val() );
+    var dateFrom= new Date( $("#ex1 ").val() ).getTime();
+    var dateTo = new Date( $("#ex2 ").val() ).getTime();
+    promotionsTakeMost(dateFrom, dateTo);
 });
 $("#ex2 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex2 ").val() );
+    var dateFrom= new Date( $("#ex1 ").val() ).getTime();
+    var dateTo = new Date( $("#ex2 ").val() ).getTime();
+    promotionsTakeMost(dateFrom, dateTo);
 });
 $("#ex3 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex3 ").val() );
+    var dateFrom= new Date( $("#ex3 ").val() ).getTime();
+    var dateTo = new Date( $("#ex4 ").val() ).getTime();
+    promotionsVsProduct(dateFrom, dateTo);
+
 });
 $("#ex4 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex4 ").val() );
+    var dateFrom= new Date( $("#ex3 ").val() ).getTime();
+    var dateTo = new Date( $("#ex4 ").val() ).getTime();
+    promotionsVsProduct(dateFrom, dateTo);
+
 });
 $("#ex5 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex5 ").val() );
+    var dateFrom= new Date( $("#ex5 ").val() ).getTime();
+    var dateTo = new Date( $("#ex6 ").val() ).getTime();
+    saleByVol(dateFrom, dateTo);
 });
 $("#ex6 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex6 ").val() );
+    var dateFrom= new Date( $("#ex5 ").val() ).getTime();
+    var dateTo = new Date( $("#ex6 ").val() ).getTime();
+    saleByVol(dateFrom, dateTo);
 });
 
 $("#ex7 ").change(function(){
     console.log(">>>>>>>> ", $("#ex7 ").val() );
 });
+
 $("#ex8 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex8 ").val() );
+    var dateFrom= new Date( $("#ex8 ").val() ).getTime();
+    var dateTo = new Date( $("#ex9 ").val() ).getTime();
+    saleByProductCategories(dateFrom, dateTo);
 });
 $("#ex9 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex9 ").val() );
+    var dateFrom= new Date( $("#ex8 ").val() ).getTime();
+    var dateTo = new Date( $("#ex9 ").val() ).getTime();
+    saleByProductCategories(dateFrom, dateTo);
 });
+
 $("#ex10 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex10 ").val() );
+    var dateFrom= new Date( $("#ex10 ").val() ).getTime();
+    var dateTo = new Date( $("#ex11 ").val() ).getTime();
+    currencyBySales(dateFrom, dateTo);
 });
 $("#ex11 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex11 ").val() );
+    var dateFrom= new Date( $("#ex10 ").val() ).getTime();
+    var dateTo = new Date( $("#ex11 ").val() ).getTime();
+    currencyBySales(dateFrom, dateTo);
 });
+
 $("#ex12 ").change(function(){
+    var dateFrom= new Date( $("#ex12 ").val() ).getTime();
+    var dateTo = new Date( $("#ex13 ").val() ).getTime();
+    salesByProductTime($("#prodTimeSale ").val(), dateFrom, dateTo);
     console.log(">>>>>>>> ", $("#ex12 ").val() );
 });
 $("#ex13 ").change(function(){
+    var dateFrom= new Date( $("#ex12 ").val() ).getTime();
+    var dateTo = new Date( $("#ex13 ").val() ).getTime();
+    salesByProductTime($("#prodTimeSale ").val(), dateFrom, dateTo);
     console.log(">>>>>>>> ", $("#ex13 ").val() );
 });
+
 $("#ex14 ").change(function(){
-    console.log(">>>>>>>> ", $("#ex14 ").val() );
+    var dateFrom= new Date( $("#ex14 ").val() ).getTime();
+    var dateTo = new Date( $("#ex15 ").val() ).getTime();
+    saleByProductCountry(dateFrom, dateTo);
+});
+$("#ex15 ").change(function(){
+    var dateFrom= new Date( $("#ex14 ").val() ).getTime();
+    var dateTo = new Date( $("#ex15 ").val() ).getTime();
+    saleByProductCountry(dateFrom, dateTo);
 });
 
-$("#yearVS ").change(function(){
-    console.log(">>>>>>>> ", $("#yearVS ").val() );
+
+$("#yearVs").change(function(){
+    internetVsCompany($("#yearVs").val());
+//    console.log(">>>>>>>> ", $("#yearVs ").val() );
 });
 $("#numProdInve ").change(function(){
-    console.log(">>>>>>>> ", $("#numProdInve ").val() );
+    inventaryProducts($("#numProdInve ").val());
+//    console.log(">>>>>>>> ", $("#numProdInve ").val() );
 });
 $("#yearPse ").change(function(){
-    console.log(">>>>>>>> ", $("#yearPse ").val() );
+    numSalesByYear($("#yearPse").val());
+    numSalesByYearN($("#yearPse").val());
 });
+
+
 $("#prodTimeSale ").change(function(){
+    var dateFrom= new Date( $("#ex12 ").val() ).getTime();
+    var dateTo = new Date( $("#ex13 ").val() ).getTime();
+    salesByProductTime($("#prodTimeSale ").val(), dateFrom, dateTo);
     console.log(">>>>>>>> ", $("#prodTimeSale ").val() );
 });

@@ -6,9 +6,10 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="JAPeTo">
     <title>BI DASH</title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <link rel="stylesheet" type="text/css" href="static/css/c3.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+
 
     <script src="static/js/jquery.min.js" charset="utf-8"></script>
     <script src="static/js/bootstrap.min.js" charset="utf-8"></script>
@@ -42,7 +43,8 @@
             <!--<img src="http://placehold.it/600x1600" alt="" class="img-responsive center-block">-->
             <div class="col-sm-12">
                 <div class="row">
-                    <img src="http://placehold.it/300x250" alt="" class="img-responsive center-block">
+                    <!--<img src="http://placehold.it/300x250" alt="" class="img-responsive center-block">-->
+                    <img src="static/bici.png" style="margin-top:9px;margin-bottom:40px;" alt="" class="img-responsive center-block">
                 </div>
                 <br/>
             </div>
@@ -206,7 +208,7 @@
                         <!--<p class="text-center">COMPARACION DE VENTAS POR VOLUMEN FRENTE A VENTAS POR TEMPORADA</p>-->
                         <div class="col-sm-6">
                             <p class="text-center">NUMERO DE VENTAS POR INTERNET EN EL AÑO
-                                <select class="input-xs" name="yearPse">
+                                <select class="input-xs" name="yearPse" id="yearPse">
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>
@@ -247,10 +249,10 @@
                     <!--<img src="http://placehold.it/600x450" alt="" class="img-responsive center-block">-->
                     <div class="form-group row">
                         <div class="col-xs-6">
-                            <input class="form-control input-xs" id="ex3" type="date" value="2010-01-01">
+                            <input class="form-control input-xs" id="ex14" type="date" value="2010-01-01">
                         </div>
                         <div class="col-xs-6">
-                            <input class="form-control input-xs" id="ex4" type="date" value="2018-01-01">
+                            <input class="form-control input-xs" id="ex15" type="date" value="2018-01-01">
                         </div>
                     </div>
                     <div id="chart13"></div>
@@ -424,45 +426,32 @@
                         <h3>Consultas:</h3>
                         <ul>
 
-                            <li><a href="">¿Cuáles son las promociones que más toman los clientes?</a>
-                            <li><a href="">Comparación de ventas por promoción y producto</a>
-                            <li><a href="">Comparación de ventas por volumen frente a ventas por temporada</a>
-                            <li><a href="">¿Cuál es la promoción de ventas por volumen que más prefieren los
+                            <li><a href="#chart1">¿Cuáles son las promociones que más toman los clientes?</a>
+                            <li><a href="#ex3">Comparación de ventas por promoción y producto</a>
+                            <!--<li><a href="">Comparación de ventas por volumen frente a ventas por temporada</a>-->
+                            <li><a href="#ex5">¿Cuál es la promoción de ventas por volumen que más prefieren los
                                 clientes?</a>
-                            <li><a href="">Comparativo entre ventas por Internet y los vendedores de la empresa</a>
-                            <li><a href="">Nivel de ventas por año, mes, trimestre y semestre</a>
-                            <li><a href="">Total de ventas de productos agrupados por categoría</a>
-                            <li><a href="">Total de ventas agrupado por países</a>
-                            <li><a href="">Monedas más usadas por los clientes en las ventas</a>
-                            <li><a href="">Total de ventas por producto y en el tiempo</a>
-                            <li><a href="">Perfil de los clientes que más compran por Internet</a>
-                            <li><a href="">Productos que casi nunca se venden, mostrar los que más unidades en
+                            <li><a href="#chart5">Comparativo entre ventas por Internet y los vendedores de la empresa</a>
+                            <!--<li><a href="">Nivel de ventas por año, mes, trimestre y semestre</a>-->
+                            <li><a href="#ex8">Total de ventas de productos agrupados por categoría</a>
+                            <li><a href="#ex14">Total de ventas agrupado por países</a>
+                            <li><a href="#ex10">Monedas más usadas por los clientes en las ventas</a>
+                            <li><a href="#prodTimeSale">Total de ventas por producto y en el tiempo</a>
+                            <!--<li><a href="">Perfil de los clientes que más compran por Internet</a>-->
+                            <li><a href="#productCant">Productos que casi nunca se venden, mostrar los que más unidades en
                                 inventario tienen</a>
-                            <li><a href="">Productos que más se demoran en inventario (más de 3 meses, más de 6 meses,
+                            <li><a href="#chart12">Productos que más se demoran en inventario (más de 3 meses, más de 6 meses,
                                 sin haber cambios)</a>
-                            <li><a href="">Comparación del nivel de llamadas al call center en días laborales Vs días
+                            <li><a href="#valHoliday">Comparación del nivel de llamadas al call center en días laborales Vs días
                                 festivos</a>
-                            <li><a href="">Comparación de llamadas por franjas horarias en días laborales</a>
-                            <li><a href="">Una comparación del presupuesto asignado a cada departamento de la
+                            <li><a href="#chart15">Comparación de llamadas por franjas horarias en días laborales</a>
+                            <li><a href="#chart16">Una comparación del presupuesto asignado a cada departamento de la
                                 empresa</a>
-                            <li><a href="">¿Cuáles con las cuentas y su departamento que más dinero mueven?</a>
+                            <li><a href="#chart17">¿Cuáles con las cuentas y su departamento que más dinero mueven?</a>
 
                         </ul>
                     </div>
 
-                    <!--<div class="col-lg-3 col-md-6">-->
-                    <!--&lt;!&ndash;<h3>Contact:</h3>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<p>Have a question or feedback? Contact me!</p>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<p><a href="" title="Contact me!"><i class="fa fa-envelope"></i> Contact</a></p>&ndash;&gt;-->
-                    <!--<h3>Repositorio:</h3>-->
-                    <!--<a href="" target="_blank" title="GitHub"><span class="fa-stack fa-lg">-->
-                    <!--<i class="fa fa-square-o fa-stack-2x"></i>-->
-                    <!--<i class="fa fa-github fa-stack-1x"></i>-->
-                    <!--</span>-->
-                    <!--GitHub</a>-->
-
-
-                    <!--</div>-->
                     <br/>
                     <div id="fb-root"></div>
 

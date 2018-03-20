@@ -34,7 +34,7 @@ function promotionsTakeMost(dateFrom, dateTo){
         crossDomain: true,
         success: function(response) {
             dataUp = JSON.parse(response);
-            var pos = -1 , total = 0, obj={ "totalporpromocion": 0, "spanishpromotionname": "Base"};
+            var pos = -1 , total = 0, obj={ "totalporpromocion": 0, "spanishpromotionname": "Ninguna"};
             dataUp.forEach(function(element, index) {
                 obj = ((obj.totalporpromocion < element.totalporpromocion)? element: obj)
                 pos = ((obj === element)? index: pos)
@@ -42,16 +42,17 @@ function promotionsTakeMost(dateFrom, dateTo){
             });
             $( "#promoTitle" ).text(obj.spanishpromotionname);
             $( "#nTitle" ).text(obj.spanishpromotionname);
-            $( "#promoValue" ).text(obj.totalporpromocion);
-            $( "#nValue" ).text(obj.totalporpromocion);
-            $( "#promoTotal" ).text("/ "+total);
+            $( "#promoValue" ).text(obj.totalporpromocion.toLocaleString('en')+" unidades");
+            $( "#nValue" ).text(obj.totalporpromocion.toLocaleString('en'));
+            $( "#promoTotal" ).text("/ "+total.toLocaleString('en'));
             delete dataUp[pos];
+            $( "#allpromo" ).empty();
             dataUp.forEach(function(element, index) {
             $( "#allpromo" ).append(
                     '<div class="pull-left">'+
                     '    <small>'+element.spanishpromotionname+'</small><br/>'+
-                    '   <b><span class="bold padding-bottom-7"> '+element.totalporpromocion+' </span> '+
-                    '   <small><span>/ '+total+'</span></small> </b>'+
+                    '   <b><span class="bold padding-bottom-7"> '+element.totalporpromocion.toLocaleString('en')+' unidades </span> '+
+                    '   <small><span>/ '+total.toLocaleString('en')+'</span></small> </b>'+
                     '    <div class="pull-left" style="width:180px;">'+
                     '        <div class="progress" style="height:8px; margin:2px 0;">'+
                     '            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" '+
@@ -77,7 +78,6 @@ function saleByYear(){
                 x[index+1] = element.calendaryear;
                 sales[index+1] = element.sale;
             });
-//            console.log([x, sales])
             var chart = c3.generate({
                 bindto: '#chart8',
                 data: {
@@ -91,11 +91,16 @@ function saleByYear(){
                     y:{show:false},
                 },
                 grid: {
-                    x: {
-                        show: true
-                    },
-                    y: {
-                        show: true
+                    x: { show: true },
+                    y: { show: true }
+                },
+                tooltip: {
+                    format: {
+                        title: function (d) { return 'Ventas Año ' + d; },
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
                     }
                 }
             });
@@ -111,7 +116,7 @@ function saleByVol(dateFrom, dateTo){
         success: function(response) {
             data7 = JSON.parse(response);
 //            console.log( data7 )
-            var pos = -1 , total = 0, obj={ "sale": 0, "spanishpromotionname": "Base"};
+            var pos = -1 , total = 0, obj={ "sale": 0, "spanishpromotionname": "Ninguna"};
             data7.forEach(function(element, index) {
                 obj = ((obj.sale < element.sale)? element: obj)
                 pos = ((obj === element)? index: pos)
@@ -119,16 +124,17 @@ function saleByVol(dateFrom, dateTo){
             });
             $( "#promoTitle7" ).text(obj.spanishpromotionname);
             $( "#nTitle7" ).text(obj.spanishpromotionname);
-            $( "#promoValue7" ).text(obj.sale);
+            $( "#promoValue7" ).text(obj.sale.toLocaleString('en')+" unidades");
             $( "#nValue7" ).text(obj.sale);
-            $( "#promoTotal7" ).text("/ "+total);
+            $( "#promoTotal7" ).text("/ "+total.toLocaleString('en')+" unidades");
             delete data7[pos];
+            $( "#allpromo7" ).empty();
             data7.forEach(function(element, index) {
             $( "#allpromo7" ).append(
                     '<div class="pull-left">'+
                     '    <small>'+element.spanishpromotionname+'</small><br/>'+
-                    '   <b><span class="bold padding-bottom-7"> '+element.sale+' </span> '+
-                    '   <small><span>/ '+total+'</span></small> </b>'+
+                    '   <b><span class="bold padding-bottom-7"> '+element.sale.toLocaleString('en')+" unidades"+' </span> '+
+                    '   <small><span>/ '+total.toLocaleString('en')+'</span></small> </b>'+
                     '    <div class="pull-left" style="width:180px;">'+
                     '        <div class="progress" style="height:8px; margin:2px 0;">'+
                     '            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" '+
@@ -166,20 +172,20 @@ function internetVsCompany(year){
                 type: 'category',
                 categories: months,
               }},
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
+                }
             });
         }
     });
-
-
-
-
-
-
-
 }
 
 function promotionsVsProduct(dateFrom, dateTo){
-
     $.ajax({
         url: 'http://127.0.0.1:5000/promotionsVsProduct/'+dateFrom+"/"+dateTo,
         contentType: 'application/json',
@@ -202,7 +208,15 @@ function promotionsVsProduct(dateFrom, dateTo){
                     type: 'category',
                     show:true
                 }
-            }
+            },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
+                }
             });
             var chart = c3.generate({
                 bindto: '#chart2b',
@@ -218,7 +232,15 @@ function promotionsVsProduct(dateFrom, dateTo){
                     x: {
                         type: 'category'
                     }
-            }
+            },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
+                }
             });
             var chart = c3.generate({
                 bindto: '#chart2c',
@@ -233,6 +255,14 @@ function promotionsVsProduct(dateFrom, dateTo){
                     x: {
                         type: 'category',
                         show:true
+                    }
+                },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
                     }
                 }
             });
@@ -268,9 +298,16 @@ function saleByProductCategories(dateFrom, dateTo){
                             type: 'category'
                         },
                         rotated: true
+                },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
                 }
             });
-
         }
     });
 }
@@ -311,6 +348,14 @@ function inventaryProducts(quantity){
                             show: false
                         },
                         rotated: true
+                },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
                 }
             });
         }
@@ -345,6 +390,14 @@ function currencyBySales(dateFrom, dateTo){
                             type: 'category',
                         },
                         rotated: true
+                },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
                 }
             });
         }
@@ -358,7 +411,7 @@ function numSalesByYear(year){
         success: function(response) {
             chart3a = JSON.parse(response);
             $( "#pseYear" ).text(chart3a[0].calendaryear);
-            $( "#pseValue" ).text(chart3a[0].ventas);
+            $( "#pseValue" ).text(chart3a[0].ventas.toLocaleString("en"));
         }
     });
 }
@@ -389,7 +442,8 @@ function numSalesByYearN(year){
                 tooltip: {
                     format: {
                         value: function (value, ratio, id) {
-                            return value+" ventas";
+                            var format = d3.format(',');
+                            return format(value)+" ventas";
                         }
                     }
                 },
@@ -445,6 +499,14 @@ function saleByProductCountry(dateFrom, dateTo){
                             type: 'category',
             //                show:false
                         }
+                },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
                 }
             });
         }
@@ -458,11 +520,11 @@ function oldProducts(){
         success: function(response) {
             data12 = JSON.parse(response);
             if(data12.length > 0){
-                $( "#productCant" ).text(data12[0].unitssold);
+                $( "#productCant" ).text(data12[0].unitssold.toLocaleString("en"));
                 $( "#producName" ).text(data12[0].englishname);
                 for(var i = 1;i < 6;i++){
                     $("#productlist").append("<li>"+data12[i].englishname
-                    +" <br/> <small>Cantidad: "+data12[i].unitssold+"</small> </li>");
+                    +" <br/> <small>Cantidad: "+data12[i].unitssold.toLocaleString("en")+"</small> </li>");
                 }
             }
         }
@@ -493,6 +555,14 @@ function moneyXCompany(){
                     x: {
                         type: 'category'
                     }
+                },
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
                 }
             });
         }
@@ -519,7 +589,17 @@ function timeZoneCalls(){
                         PM1: 'area-spline',
                         PM2: 'area-spline'
                     }
+                },
+               tooltip: {
+                    format: {
+                        title: function (d) { return 'horarios y N. Ventas'; },
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
                 }
+
             });
         }
     });
@@ -551,6 +631,9 @@ function salesByProductTime(product, dateFrom, dateTo){
                 months_text.push(element.spanishmonthname);
                 sales.push(element.sale);
             });
+            var categories = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO',
+                              'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE',
+                              'NOVIEMBRE', 'DICIEMBRE'];
             var chart = c3.generate({
                 bindto: '#chart11',
                 data: {
@@ -560,7 +643,16 @@ function salesByProductTime(product, dateFrom, dateTo){
                         sales
                     ]
                 },
-                grid: { x: {show: true}, y: {show: true} }
+                grid: { x: {show: true}, y: {show: true} },
+               tooltip: {
+                    format: {
+                        title: function (d) { return 'Ventas Mes de '+categories[d]; },
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
+                }
             });
         }
     });
@@ -615,6 +707,14 @@ function moneyMax(){
                 type: 'category',
                 categories: departaments,
               }},
+               tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            var format = d3.format(',');
+                            return format(value);
+                        }
+                    }
+                }
             });
         }
     });

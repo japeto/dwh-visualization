@@ -140,7 +140,7 @@ def currency_sales(date_in, date_out ):
 @app.route("/products/", methods=['GET'])
 @cross_origin()
 def products():
-    return query_manager("SELECT dp.englishproductname, dp.spanishproductname FROM dimproduct AS dp "
+    return query_manager("SELECT DISTINCT dp.englishproductname, dp.spanishproductname FROM dimproduct AS dp "
                          " ORDER BY dp.englishproductname")
 
 @app.route("/salesByProductTime/<product_name>/<date_in>/<date_out>")
